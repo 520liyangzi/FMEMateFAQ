@@ -1,0 +1,181 @@
+{
+  "groups": [
+    {
+      "canonical": "receive_optical_power",
+      "terms": [
+        "接收光功率",
+        "接收端光功率",
+        "收光功率",
+        "收光",
+        "receive optical power",
+        "received optical power",
+        "receiving optical power",
+        "rx optical power",
+        "rx power",
+        "optical receive power",
+        "optical rx power",
+        "input optical power"
+      ]
+    },
+    {
+      "canonical": "transmit_optical_power",
+      "terms": [
+        "发射光功率",
+        "发送光功率",
+        "发射端光功率",
+        "发光功率",
+        "发光",
+        "transmit optical power",
+        "transmitted optical power",
+        "transmitting optical power",
+        "tx optical power",
+        "tx power",
+        "optical transmit power",
+        "optical tx power",
+        "output optical power"
+      ]
+    },
+    {
+      "canonical": "optical_power",
+      "terms": [
+        "光功率",
+        "optical power"
+      ]
+    },
+    {
+      "canonical": "gnss_working_mode",
+      "terms": [
+        "GNSS工作模式",
+        "GNSS运行模式",
+        "GNSS模式",
+        "GNSS working mode",
+        "GNSS operating mode",
+        "GNSS operation mode",
+        "GNSS mode"
+      ]
+    },
+    {
+      "canonical": "cabinet_number",
+      "terms": [
+        "柜号",
+        "机柜号",
+        "Cabinet Number",
+        "Cabinet No",
+        "Cabinet ID"
+      ]
+    },
+    {
+      "canonical": "frame_number",
+      "terms": [
+        "框号",
+        "机框号",
+        "Frame Number",
+        "Frame No",
+        "Frame ID",
+        "Subrack Number",
+        "Subrack No"
+      ]
+    },
+    {
+      "canonical": "slot_number",
+      "terms": [
+        "槽号",
+        "槽位号",
+        "Slot Number",
+        "Slot No",
+        "Slot ID"
+      ]
+    },
+    {
+      "canonical": "transmit_port_number",
+      "terms": [
+        "发射端口号",
+        "发送端口号",
+        "Transmit Port Number",
+        "Tx Port Number"
+      ]
+    },
+    {
+      "canonical": "vswr",
+      "terms": [
+        "驻波比",
+        "电压驻波比",
+        "VSWR",
+        "Voltage Standing Wave Ratio"
+      ]
+    },
+    {
+      "canonical": "alarm_threshold",
+      "terms": [
+        "告警门限",
+        "告警阈值",
+        "Alarm Threshold"
+      ]
+    },
+    {
+      "canonical": "board_temperature",
+      "terms": [
+        "单板温度",
+        "板卡温度",
+        "Board Temperature",
+        "Card Temperature"
+      ]
+    },
+    {
+      "canonical": "fan_speed",
+      "terms": [
+        "风扇转速",
+        "Fan Speed",
+        "Fan RPM"
+      ]
+    },
+    {
+      "canonical": "board_model",
+      "terms": [
+        "单板型号",
+        "板卡型号",
+        "Board Model",
+        "Card Model"
+      ]
+    },
+    {
+      "canonical": "topology",
+      "terms": [
+        "拓扑图",
+        "拓扑",
+        "Topology",
+        "Topology Diagram"
+      ]
+    },
+    {
+      "canonical": "fault_link",
+      "terms": [
+        "故障链路",
+        "Fault Link",
+        "Faulty Link",
+        "Fault Path"
+      ]
+    },
+    {
+      "canonical": "root_cause",
+      "terms": [
+        "根因",
+        "根本原因",
+        "故障原因",
+        "Root Cause",
+        "Rootcause"
+      ]
+    },
+    {
+      "canonical": "suggestions",
+      "terms": [
+        "处理建议",
+        "修复建议",
+        "整改建议",
+        "Rectification Suggestions",
+        "Handling Suggestions",
+        "Suggestions"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>FMEMate 功能导航</title>
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <a class="brand" href="#recommend"><span class="brand-icon">F</span><span>FMEMate<small>功能导航</small></span></a>
+  <div class="nav-caption">工作空间</div>
+  <nav aria-label="主导航">
+    <button class="nav-item active" data-view="recommend"><span class="nav-icon">⌕</span>需求推荐</button>
+    <button class="nav-item" data-view="catalog"><span class="nav-icon">▦</span>功能目录<span id="catalog-count" class="nav-count">0</span></button>
+    <button class="nav-item" data-view="import"><span class="nav-icon">↥</span>导入 Excel</button>
+    <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span>别名与 AI</button>
+  </nav>
+  <div class="sidebar-foot"><div class="connection"><i></i>本地工作空间</div><p>从需求找到可用功能<br>匹配结果可追溯到 Excel</p></div>
+</aside>
+<div class="main-shell">
+<header class="topbar"><div><span class="breadcrumb">FMEMate</span><span class="slash">/</span><span id="page-title">需求推荐</span></div><div class="topbar-right"><span id="dataset-label">正在加载数据</span><a href="/api/catalog/export" class="text-link">导出目录</a></div></header>
+<main>
+<div id="global-message" role="status" class="notice" hidden></div>
+<div id="demo-banner" class="demo-banner" hidden><span><strong>当前为示例数据</strong> 用于体验匹配流程；实际功能范围以你导入的 Excel 为准。</span><button class="link-button" data-goto="import">导入自己的数据 <span aria-hidden="true">→</span></button></div>
+<section id="view-recommend" class="view">
+  <div class="page-heading"><div><div class="eyebrow">FUNCTION FINDER</div><h1>你想查看哪些信息？</h1><p>描述你的需求，找到能够覆盖它们的 FMEMate 预置问题。</p></div><span class="status-pill"><i></i>本地匹配</span></div>
+  <form id="search-form" class="search-panel">
+    <label for="query">查询需求</label>
+    <textarea id="query" rows="3" maxlength="2000" placeholder="例如：我想查端口的收发光功率和 GNSS 工作模式" required></textarea>
+    <div class="search-options"><div><label class="checkbox-row"><input type="checkbox" id="use-ai" disabled>使用 Claude 增强理解</label><span id="ai-hint" class="muted small">可在“别名与 AI”中启用</span></div><button id="search-button" class="button primary" type="submit"><span>查找可用功能</span><span aria-hidden="true">→</span></button></div>
+    <div class="search-footer"><span>支持中文、英文与多项需求</span><span>Ctrl / ⌘ + Enter 查询</span></div>
+  </form>
+  <div class="examples"><span>试一试</span><button data-query="端口的收发光功率和GNSS工作模式">收发光功率 + GNSS 工作模式</button><button data-query="查询单板型号">查询单板型号</button><button data-query="Cabinet Number and VSWR">Cabinet Number and VSWR</button></div>
+  <div id="results" hidden aria-live="polite"></div>
+  <div id="welcome" class="welcome-grid"><article><div class="feature-number">01</div><h3>导入功能清单</h3><p>读取问题、对象、字段的中英文关系，支持 Excel 合并单元格。</p><button class="link-button" data-goto="import">导入 Excel →</button></article><article><div class="feature-number">02</div><h3>一次描述多个需求</h3><p>分别识别所需信息，优先推荐能够一起覆盖需求的功能。</p></article><article><div class="feature-number">03</div><h3>查看推荐依据</h3><p>每项匹配展示对应对象、字段和来源行，未覆盖需求会单独列出。</p></article></div>
+</section>
+<section id="view-catalog" class="view" hidden>
+  <div class="page-heading"><div><div class="eyebrow">CAPABILITY CATALOG</div><h1>功能目录</h1><p>查看问题与对象、字段之间的关系。</p></div><a class="button secondary" href="/api/catalog/export">导出 JSON</a></div>
+  <div id="catalog-stats" class="stats-grid"></div>
+  <div class="catalog-toolbar"><input id="catalog-search" type="search" placeholder="搜索问题、对象或字段…" aria-label="搜索功能目录"><span id="catalog-filter-count" class="muted small"></span></div>
+  <div id="catalog-list" class="catalog-list"></div>
+</section>
+<section id="view-import" class="view" hidden>
+  <div class="page-heading"><div><div class="eyebrow">DATA IMPORT</div><h1>导入 Excel</h1><p>确认识别结果后，再替换当前功能目录。</p></div><a class="button secondary" href="/api/template.csv">下载示例 CSV</a></div>
+  <div class="panel"><h2>选择功能清单</h2><p class="muted">支持 .xlsx、.xlsm、.csv；最大 20 MB。自动匹配表头，无法识别时按前六列；修改列号后使用指定映射。</p><label class="file-drop" for="import-file"><span class="upload-mark">↥</span><strong id="file-label">点击选择 Excel 或 CSV 文件</strong><span>合并单元格将按实际层级展开</span><input id="import-file" type="file" accept=".xlsx,.xlsm,.csv"></label>
+  <details class="import-options"><summary>工作表与列映射</summary><div class="options-grid"><label>工作表<select id="import-sheet"><option value="">自动识别</option></select></label><label>表头行号<input id="header-row" type="number" min="0" placeholder="留空自动识别；0 表示无表头"></label></div><div id="column-mapping" class="mapping-grid"></div><p class="muted small">列号从 1 开始（A = 1，B = 2）。多个工作表时，先预览再切换工作表重新识别。</p></details>
+  <div class="panel-actions"><button id="preview-button" class="button primary" disabled>识别并预览</button></div></div>
+  <div id="import-preview" hidden></div>
+  <div class="demo-section"><div><h3>先体验示例</h3><p>尚未准备好 Excel？可以加载人工编写的演示目录。</p></div><button id="load-demo" class="button secondary">加载示例数据</button></div>
+</section>
+<section id="view-settings" class="view" hidden>
+  <div class="page-heading"><div><div class="eyebrow">MATCHING SETTINGS</div><h1>别名与 AI</h1><p>完善专业词汇，或接入本机已登录的 Claude 命令行。</p></div></div>
+  <div class="settings-grid"><form id="aliases-form" class="panel"><div class="panel-heading"><h2>专业词别名</h2><span class="tag">本地</span></div><p class="muted">同一概念的中文、英文、缩写放在一个 group 中。保存后直接用于匹配。</p><label for="aliases-json">别名字典（JSON）</label><textarea id="aliases-json" class="code-input" rows="17" spellcheck="false"></textarea><div class="panel-actions"><button class="button primary" type="submit">保存别名</button></div></form>
+  <form id="settings-form" class="panel"><div class="panel-heading"><h2>Claude CLI</h2><span class="tag">可选</span></div><p class="muted">无需填写 API Key。请先在运行本软件的电脑中安装并登录公司可用的 Claude 命令行。</p><label class="checkbox-row setting-toggle"><input type="checkbox" id="claude-enabled">启用 Claude 增强需求理解</label><label for="claude-command">启动命令（JSON 数组）</label><textarea id="claude-command" class="code-input" rows="3" spellcheck="false">["claude"]</textarea><p class="muted small">例如 ["claude"] 或公司命令的完整路径。程序会通过标准输入发送提示词。</p><label for="claude-timeout">超时时间（秒）</label><input id="claude-timeout" type="number" min="5" max="120" value="45"><div class="info-note">AI 仅帮助理解需求；推荐结果仍以导入目录的匹配证据为准。调用失败时会回退到本地匹配。</div><div class="panel-actions"><button class="button primary" type="submit">保存 AI 设置</button></div></form></div>
+</section>
+</main>
+<footer>FMEMate 功能导航<span>需求 → 对象与字段 → 可用功能</span></footer>
+</div></div>
+</body></html>

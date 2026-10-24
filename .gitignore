@@ -1,0 +1,14 @@
+data/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.log
+.DS_Store
+node_modules/
+test-results/
+*.xlsx
+*.xlsm
+*.xls
+*.csv
